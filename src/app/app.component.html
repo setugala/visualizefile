@@ -1,0 +1,35 @@
+<div class="input-container">
+	<input type ="file" (change)="uploadFile($event)" placeholder="Upload file..."/>
+</div>
+
+<div class="output-container">
+	<mat-form-field>
+    	<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+  	</mat-form-field>
+  
+  	<mat-table [dataSource]="dataSource" matSort >
+  	<!-- (matSortChange)="sortData($event)" -->
+    	<ng-container matColumnDef="FirstName" >
+      		<mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+      		<mat-cell *matCellDef="let user"> {{user['First name']}} </mat-cell>
+    	</ng-container>
+     	<ng-container matColumnDef="SurName" >
+      		<mat-header-cell *matHeaderCellDef>Sur Name</mat-header-cell>
+      		<mat-cell *matCellDef="let user"> {{user['Sur name']}} </mat-cell>
+    	</ng-container>
+    	<ng-container matColumnDef="Issue count">
+      		<mat-header-cell *matHeaderCellDef mat-sort-header>Issue count</mat-header-cell>
+      		<mat-cell *matCellDef="let user"> {{user['Issue count']}} </mat-cell>
+    	</ng-container>
+    	<ng-container matColumnDef="DateofBirth">
+      		<mat-header-cell *matHeaderCellDef>Date Of Birth</mat-header-cell>
+      		<mat-cell *matCellDef="let user"> {{user['Date of birth'] | date:'dd-MM-yyyy'}} </mat-cell>
+    	</ng-container>
+    	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+	</mat-table>
+  
+  	<mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+ 
+</div>
+ 

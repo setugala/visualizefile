@@ -1,0 +1,10 @@
+.output-container{
+max-width:500px;
+margin:auto
+}
+
+.input-container{
+    max-width: 350px;
+    margin: auto;
+    padding: 15px;
+}
